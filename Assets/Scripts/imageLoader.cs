@@ -12,8 +12,6 @@ public class imageLoader : MonoBehaviour
     List<Texture2D> images;
     public CameraMovement cameraMove;
     public SceneManager sceneManager;
-    public Canvas canvas;
-    public Rect testRect;
 
     DropInfo dropInfo = null;
     class DropInfo
@@ -41,13 +39,6 @@ public class imageLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Input.mousePosition);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.GetComponent<Canvas>().renderMode == RenderMode.ScreenSpaceOverlay ? null : Camera.main, out Vector2 mousePos);
-        if (testRect.Contains(mousePos))
-        {
-            Debug.Log(mousePos);
-        }
-
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
             if (Input.GetKeyDown(KeyCode.O))
@@ -120,32 +111,28 @@ public class imageLoader : MonoBehaviour
                 pos = new Vector2(aPos.x, aPos.y)
             };
             dropInfo = info;
-            //RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.GetComponent<Canvas>().renderMode == RenderMode.ScreenSpaceOverlay ? null : Camera.main, out Vector2 mousePos);
-            //if (testRect.Contains(mousePos))
-            //{
-                string filename = Path.GetFileName(dropInfo.filepath);
-                Texture2D texture;
+            string filename = Path.GetFileName(dropInfo.filepath);
+            Texture2D texture;
 
-                Debug.LogError(dropInfo.filepath);
-                if (string.IsNullOrEmpty(dropInfo.filepath))
+            Debug.LogError(dropInfo.filepath);
+            if (string.IsNullOrEmpty(dropInfo.filepath))
+            {
+
+            }
+            else
+            {
+                byte[] byteArray = File.ReadAllBytes(dropInfo.filepath);
+                texture = new Texture2D(2, 2);
+                bool isLoaded = texture.LoadImage(byteArray);
+
+                if (isLoaded)
                 {
-
+                    texture.name = file;
+                    GetComponent<Renderer>().material.SetTexture("_MainTex", texture);
                 }
-                else
-                {
-                    byte[] byteArray = File.ReadAllBytes(dropInfo.filepath);
-                    texture = new Texture2D(2, 2);
-                    bool isLoaded = texture.LoadImage(byteArray);
-
-                    if (isLoaded)
-                    {
-                        texture.name = file;
-                        GetComponent<Renderer>().material.SetTexture("_MainTex", texture);
-                    }
-                }
-                cameraMove.imageLoaded = true;
-                sceneManager.onImageLoad();
-            //}
+            }
+            cameraMove.imageLoaded = true;
+            sceneManager.onImageLoad();
         }
     }
 }

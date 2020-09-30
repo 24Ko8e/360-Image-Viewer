@@ -674,7 +674,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5de759a58aee1cb419cf2449497dd2d9, type: 2}
+  - {fileID: 2100000, guid: a21ee451a1d90514489730e310263749, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -737,13 +737,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 66f06f0055049df4e846d5a042eb244f, type: 3}
   cameraMove: {fileID: 1722155638}
   sceneManager: {fileID: 1250216601}
-  canvas: {fileID: 87253508}
-  testRect:
-    serializedVersion: 2
-    x: -150
-    y: -275
-    width: 300
-    height: 150
 --- !u!1 &1722155636
 GameObject:
   m_ObjectHideFlags: 0
