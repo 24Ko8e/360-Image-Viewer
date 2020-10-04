@@ -11,7 +11,8 @@ public class SceneManager : MonoBehaviour
 {
     public CameraMovement cameraMove;
     public GameObject Sphere;
-
+    Resolution fullscreenRes;
+    Resolution windowedRes;
     public List<GameObject> listToDisable;
     public List<GameObject> listToEnable;
 
@@ -34,6 +35,12 @@ public class SceneManager : MonoBehaviour
     {
         UnityDragAndDropHook.UninstallHook();
         shortcutManager.current.OpenFile -= openImage;
+    }
+
+    private void Start()
+    {
+        fullscreenRes = Screen.resolutions[Screen.resolutions.Length - 1];
+        Debug.Log(Screen.resolutions[Screen.resolutions.Length - 1]);
     }
 
     private void Update()
@@ -135,15 +142,27 @@ public class SceneManager : MonoBehaviour
 
     public void fullscreenToggle()
     {
+#if UNITY_STANDALONE
+        if (!Screen.fullScreen)
+        {
+            windowedRes = Screen.currentResolution;
+            windowedRes.width = Screen.width;
+            windowedRes.height = Screen.height;
+            Screen.SetResolution(fullscreenRes.width, fullscreenRes.height, FullScreenMode.ExclusiveFullScreen);
+        }
+        else if (Screen.fullScreen)
+        {
+            Screen.SetResolution(windowedRes.width, windowedRes.height, FullScreenMode.Windowed);
+        }
+#elif UNITY_EDITOR
         if (Screen.fullScreen)
         {
-            Debug.LogError(Screen.currentResolution);
-            Screen.SetResolution(Screen.width, Screen.height, false);
+            Debug.Log("Windowed mode");
         }
         else if (!Screen.fullScreen)
         {
-            Debug.LogError(Screen.currentResolution);
-            Screen.SetResolution(Screen.width, Screen.height, true);
+            Debug.Log("Fullscreen mode");
         }
+#endif
     }
 }

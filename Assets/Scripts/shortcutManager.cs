@@ -23,7 +23,7 @@ public class shortcutManager : MonoBehaviour
         {
             loadFile();
         }
-#else
+#elif UNITY_STANDALONE
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
             if (Input.GetKeyDown(KeyCode.O))
