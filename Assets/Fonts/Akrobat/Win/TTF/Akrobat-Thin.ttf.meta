@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: f6ca0e5be80da5548a41b94422d25ba1
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Akrobat
+  fontNames:
+  - Akrobat
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 91a2f9907c5d6824e8692db70f856135, type: 3}
+  - {fileID: 12800000, guid: 452f61d8ce031ae499628a5ea59f67cb, type: 3}
+  - {fileID: 12800000, guid: d5b75959aed4e6648b29cad48df3bffd, type: 3}
+  - {fileID: 12800000, guid: 86d429fa0ac3eb14f90dfd1fe4b384cf, type: 3}
+  - {fileID: 12800000, guid: 92e2aafa54ac99140b4b50a303767604, type: 3}
+  - {fileID: 12800000, guid: 249f7e6fb32433441a5dcc334119e9a8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
