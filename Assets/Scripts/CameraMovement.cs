@@ -26,9 +26,9 @@ public class CameraMovement : MonoBehaviour
             Quaternion currYaw = Quaternion.AngleAxis(m_CurrYaw, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis(m_CurrPitch, currYaw * Vector3.right) * currYaw, drag * Time.deltaTime);
         }
-        else
+        /*else
         {
-            transform.Rotate(0, autoRotateSpeed * Time.deltaTime, 0);
-        }
+            transform.Rotate(0, autoRotateSpeed * Time.deltaTime, 0);           //Auto-rotate
+        }*/
     }
 }
