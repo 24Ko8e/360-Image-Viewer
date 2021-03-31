@@ -77,19 +77,23 @@ public class SceneManager : MonoBehaviour
                 }
             }
             cameraMove.imageLoaded = true;
-
-            for (int i = 0; i < listToDisable.Count; i++)
-            {
-                listToDisable[i].gameObject.SetActive(false);
-            }
-            for (int i = 0; i < listToEnable.Count; i++)
-            {
-                listToEnable[i].gameObject.SetActive(true);
-            }
+            SwitchUI();
         }
         else
         {
 
+        }
+    }
+
+    private void SwitchUI()
+    {
+        for (int i = 0; i < listToDisable.Count; i++)
+        {
+            listToDisable[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < listToEnable.Count; i++)
+        {
+            listToEnable[i].gameObject.SetActive(true);
         }
     }
 
@@ -137,6 +141,7 @@ public class SceneManager : MonoBehaviour
                 }
             }
             cameraMove.imageLoaded = true;
+            SwitchUI();
         }
     }
 
